@@ -1,0 +1,11 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - Percolation",
+      "request": "launch",
+      "mainClass": "Percolation",
+      "projectName": "assignment1_a20e728d"
+    },
+  ]
+}
