@@ -5,7 +5,14 @@
       "name": "CodeLens (Launch) - Percolation",
       "request": "launch",
       "mainClass": "Percolation",
-      "projectName": "assignment1_a20e728d"
+      "projectName": "percolation_ed8506f7"
     },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - Percolation",
+      "request": "launch",
+      "mainClass": "Percolation",
+      "projectName": "assignment1_a20e728d"
+    }
   ]
 }

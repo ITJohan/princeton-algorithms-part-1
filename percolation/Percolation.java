@@ -5,7 +5,8 @@ import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 public class Percolation {
   private int n;
   private int openSites;
-  private int[][] grid;
+  private int[][] grid;               // 0 closed, 1 open
+  private WeightedQuickUnionUF wquf;
 
   // create n-by-n grid, with all sites blocked
   public Percolation(int n) {
@@ -15,6 +16,7 @@ public class Percolation {
 
     this.n = n;
     this.grid = new int[n][n];
+    this.wquf = new WeightedQuickUnionUF(n * n);
 
     // Set all sites to closed
     this.openSites = 0;
@@ -32,8 +34,28 @@ public class Percolation {
     }
     
     if (this.grid[row - 1][col - 1] == 0) {
+      // Open site
       this.grid[row - 1][col - 1] = 1;
       this.openSites++;
+
+      // Connect to neighbours
+      int p = (row - 1) * this.n + (col - 1);
+      if (row - 1 > 0 && this.grid[row - 2][col - 1] == 0) {  // Connect to top if it's open
+        int q = (row - 2) * this.n + (col - 1);
+        this.wquf.union(p, q);
+      }
+      if (col - 1 < n - 1 && this.grid[row - 1][col] == 0) {  // Connect to right if it's open
+        int q = (row - 1) * this.n + col;
+        this.wquf.union(p, q);
+      }
+      if (row - 1 < n - 1 && this.grid[row][col - 1] == 0) {  // Connect to bottom if it's open
+        int q = row * this.n + (col - 1);
+        this.wquf.union(p, q);
+      }
+      if (col - 1 > 0 && this.grid[row - 1][col - 2] == 0) {  // Connect to left if it's open
+        int q = (row - 1) * this.n + (col - 2);
+        this.wquf.union(p, q);
+      }
     }
   }
 
