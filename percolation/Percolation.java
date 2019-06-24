@@ -1,5 +1,3 @@
-import edu.princeton.cs.algs4.StdRandom;
-import edu.princeton.cs.algs4.StdStats;
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 public class Percolation {
@@ -76,7 +74,7 @@ public class Percolation {
   }
 
   // is site (row, col) full?
-  public boolean isFull(int row, int col) { // EJ KLAR
+  public boolean isFull(int row, int col) { 
     if (row > this.n || row < 1 || col > this.n || col < 1) {
       throw new IllegalArgumentException("Row and col must be >= 1 and <= n");
     }
@@ -85,9 +83,8 @@ public class Percolation {
     if (this.grid[row - 1][col - 1] == 0)
       return false; 
 
-    // int p = (row - 1) * this.n + (col - 1);
-
-    return false;
+    int p = (row - 1) * this.n + (col - 1);
+    return this.wquf.connected(p, this.wquf.find(0));
   }
 
   // number of open sites
@@ -96,8 +93,8 @@ public class Percolation {
   }
 
   // does the system percolate?
-  public boolean percolates() { // EJ KLAR
-    return false;
+  public boolean percolates() {
+    return isFull(this.n, this.n);
   }
 
   /**
@@ -122,38 +119,5 @@ public class Percolation {
     }
     System.out.println("");
     
-  }
-
-  public static void main(String[] args) {
-    Percolation percolation = new Percolation(10);
-    // percolation.printGrid();
-    // percolation.open(1, 1);
-    // percolation.printGrid();
-    // percolation.open(1, 2);
-    // percolation.printGrid();
-    // percolation.open(1, 4);
-    // percolation.printGrid();
-    // percolation.open(2, 4);
-    // percolation.printGrid();
-    // percolation.open(3, 2);
-    // percolation.printGrid();
-    // percolation.open(3, 4);
-    // percolation.printGrid();
-    // percolation.open(3, 5);
-    // percolation.printGrid();
-    // percolation.open(4, 1);
-    // percolation.printGrid();
-    // percolation.open(4, 3);
-    // percolation.printGrid();
-    // percolation.open(5, 1);
-    // percolation.printGrid();
-    // percolation.open(5, 2);
-    // percolation.printGrid();
-    // percolation.open(5, 4);
-    // percolation.printGrid();
-    // percolation.open(5, 5);
-    // percolation.printGrid();
-    // percolation.open(3, 3);
-    percolation.printGrid();
   }
 }
