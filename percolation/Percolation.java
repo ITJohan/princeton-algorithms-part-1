@@ -38,6 +38,11 @@ public class Percolation {
       this.grid[row - 1][col - 1] = 1;
       this.openSites++;
 
+      /**
+       * TODO: Create array containing all components for top and another for bottom.
+       * This represent the virtual top site and virtual bottom site, respectively.
+       */
+
       // Connect to neighbours
       int p = (row - 1) * this.n + (col - 1);
       if (row - 1 > 0 && this.grid[row - 2][col - 1] == 0) {  // Connect to top if it's open
@@ -69,12 +74,17 @@ public class Percolation {
   }
 
   // is site (row, col) full?
-  public boolean isFull(int row, int col) { // EJ KLAR
+  public boolean isFull(int row, int col) {
     if (row > this.n || row < 1 || col > this.n || col < 1) {
       throw new IllegalArgumentException("Row and col must be >= 1 and <= n");
     }
 
-    return false;
+    // Is site closed?
+    if (this.grid[row - 1][col - 1] == 0)
+      return false; 
+
+    int p = (row - 1) * this.n + (col - 1);
+    return this.wquf.connected(p, );
   }
 
   // number of open sites
