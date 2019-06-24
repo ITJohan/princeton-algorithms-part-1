@@ -2,6 +2,27 @@
   "configurations": [
     {
       "type": "java",
+      "name": "CodeLens (Launch) - PercolationVisualizer",
+      "request": "launch",
+      "mainClass": "PercolationVisualizer",
+      "projectName": "percolation_9fdb0717"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - InteractivePercolationVisualizer",
+      "request": "launch",
+      "mainClass": "InteractivePercolationVisualizer",
+      "projectName": "percolation_9fdb0717"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - PercolationStats",
+      "request": "launch",
+      "mainClass": "PercolationStats",
+      "projectName": "percolation_9fdb0717"
+    },
+    {
+      "type": "java",
       "name": "CodeLens (Launch) - Percolation",
       "request": "launch",
       "mainClass": "Percolation",

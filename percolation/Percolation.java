@@ -1,10 +1,10 @@
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 public class Percolation {
-  private int n;                      // Size of grid
+  private final int n;                      // Size of grid
   private int openSites;              // Number of open sites
   private int[][] grid;               // 0 closed, 1 open
-  private WeightedQuickUnionUF wquf;
+  private final WeightedQuickUnionUF wquf;
 
   // create n-by-n grid, with all sites blocked
   public Percolation(int n) {
@@ -81,7 +81,7 @@ public class Percolation {
 
     // Is site closed?
     if (this.grid[row - 1][col - 1] == 0)
-      return false; 
+      return false;
 
     int p = (row - 1) * this.n + (col - 1);
     return this.wquf.connected(p, this.wquf.find(0));
@@ -94,12 +94,16 @@ public class Percolation {
 
   // does the system percolate?
   public boolean percolates() {
-    return isFull(this.n, this.n);
+    int col = 1;
+    for (int i = 0; i < this.n; i++) {
+      if (this.grid[this.n - 1][i] == 1) {
+        col = i + 1;
+        break;
+      }
+    }
+    return isFull(this.n, col);
   }
 
-  /**
-   * Prints the grid to the console
-   */
   public void printGrid() {
     System.out.println("Wquf: ");
     for (int i = 0; i < this.grid.length; i++) {
