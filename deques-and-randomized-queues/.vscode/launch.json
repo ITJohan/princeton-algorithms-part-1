@@ -1,0 +1,26 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - Permutation",
+      "request": "launch",
+      "mainClass": "Permutation",
+      "projectName": "deques-and-randomized-queues_9b1989e7",
+      "args": "Permutation 3 \"A B C D E F G H I\""
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - RandomizedQueue",
+      "request": "launch",
+      "mainClass": "RandomizedQueue",
+      "projectName": "deques-and-randomized-queues_9b1989e7"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - Deque",
+      "request": "launch",
+      "mainClass": "Deque",
+      "projectName": "deques-and-randomized-queues_9b1989e7"
+    }
+  ]
+}
