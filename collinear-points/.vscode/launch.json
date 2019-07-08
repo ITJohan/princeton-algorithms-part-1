@@ -1,0 +1,18 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - TestStdDraw",
+      "request": "launch",
+      "mainClass": "TestStdDraw",
+      "projectName": "collinear-points_28bad4a6"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - Point",
+      "request": "launch",
+      "mainClass": "Point",
+      "projectName": "collinear-points_28bad4a6"
+    }
+  ]
+}
