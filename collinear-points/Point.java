@@ -8,7 +8,10 @@
  *
  ******************************************************************************/
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
+
 import edu.princeton.cs.algs4.StdDraw;
 
 public class Point implements Comparable<Point> {
@@ -62,15 +65,15 @@ public class Point implements Comparable<Point> {
         if (this.x == that.x && this.y == that.y) {
             // Same point?
             return Double.NEGATIVE_INFINITY;
-        } else if (this.y == that.y) {
+        } else if (this.x == that.x) {
             // Vertical?
             return Double.POSITIVE_INFINITY;
-        } else if (this.x == that.x) {
+        } else if (this.y == that.y) {
             // Horizontal?
             return 0.0;
         }
 
-        return (that.y - this.y) / (that.x - this.x);
+        return (double) (that.y - this.y) / (that.x - this.x);
     }
 
     /**
@@ -124,16 +127,52 @@ public class Point implements Comparable<Point> {
      * Unit tests the Point data type.
      */
     public static void main(String[] args) {
-        StdDraw.setScale(0.0, 10.0);
-        StdDraw.setPenRadius(0.01);
+        int n = 5;
+        int size = 5;
+
+        StdDraw.setScale(0.0, (double) size);
+
+        StdDraw.setPenRadius(0.001);
+        StdDraw.setPenColor(StdDraw.BLACK);
+
+        for (int i = 1; i < size; i++) {
+            LineSegment yLine = new LineSegment(new Point(i, 0), new Point(i, size));
+            yLine.draw();
+            for (int j = 1; j < size; j++) {
+                LineSegment xLine = new LineSegment(new Point(0, j), new Point(size, j));
+                xLine.draw();
+            }
+        }
+
+        StdDraw.setPenRadius(0.02);
         StdDraw.setPenColor(StdDraw.BLUE);
-        Point p1 = new Point(1, 1);
-        Point p2 = new Point(5, 7);
-        Point p3 = new Point(5, 2);
-        Point p4 = new Point(4, 8);
-        p1.draw();
-        p2.draw();
-        p3.draw();
-        p4.draw();
+
+        List<Integer> xValues = new ArrayList<>();
+        List<Integer> yValues = new ArrayList<>();
+
+        Point[] points = new Point[n];
+        for (int i = 0; i < n; i++) {
+            int x = (int) (Math.random() * size);
+            int y = (int) (Math.random() * size);
+            while (xValues.contains(x) && yValues.contains(y)) {
+                x = (int) (Math.random() * size);
+                y = (int) (Math.random() * size);
+            }
+            xValues.add(x);
+            yValues.add(y);
+            points[i] = new Point(x, y);
+            points[i].draw();
+        }
+
+        BruteCollinearPoints bcp = new BruteCollinearPoints(points);
+        FastCollinearPoints fcp = new FastCollinearPoints(points);
+
+        // StdDraw.setPenRadius(0.005);
+        // StdDraw.setPenColor(StdDraw.RED);
+        // for (LineSegment segment : bcp.segments()) {
+        //     segment.draw();
+        // }
+
+        // System.out.println(bcp.numberOfSegments());
     }
 }
